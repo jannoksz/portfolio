@@ -1,6 +1,10 @@
 # Rey Cardama — Portfolio
 
-A personal portfolio site built with React + Vite.
+Personal portfolio site for Rey E. Cardama, Platform Support Specialist.
+
+**Live site:** https://jannoksz.github.io/portfolio/
+
+Built with React + Vite. Auto-deploys to GitHub Pages via GitHub Actions on every push to `main`.
 
 ## Run locally
 
@@ -11,40 +15,19 @@ npm run dev
 
 Then open the local URL it prints (usually http://localhost:5173).
 
-## Publish on GitHub Pages
+## Updating content
 
-**1. Create a new GitHub repository**
-Go to https://github.com/new and create a repo. Note the exact name you choose — you'll need it below.
-Suggested name: `portfolio`
+All resume content (experience, skills, education) lives in data arrays near the top of `src/App.jsx` — edit those, then:
 
-**2. Match the repo name in `vite.config.js`**
-Open `vite.config.js` and make sure `base` matches your repo name exactly:
-```js
-base: '/your-repo-name/',
-```
-(If you plan to deploy to a root domain like `yourusername.github.io`, set `base: '/'` instead.)
-
-**3. Push this project to GitHub**
-From this folder, run:
 ```bash
-git init
 git add .
-git commit -m "Initial portfolio commit"
-git branch -M main
-git remote add origin https://github.com/YOUR-USERNAME/YOUR-REPO-NAME.git
-git push -u origin main
+git commit -m "update content"
+git push
 ```
 
-**4. Turn on GitHub Pages**
-In your GitHub repo: **Settings → Pages → Build and deployment → Source → GitHub Actions**.
+The site rebuilds and redeploys automatically — check the **Actions** tab in the repo to watch progress. Changes are usually live within 1–2 minutes.
 
-That's it — a workflow (`.github/workflows/deploy.yml`) is already included. Every time you push to `main`, it will automatically build the site and publish it.
+## Deployment notes
 
-Your site will be live at:
-```
-https://YOUR-USERNAME.github.io/YOUR-REPO-NAME/
-```
-
-## Updating content later
-
-All the resume content (experience, skills, education) lives in data arrays near the top of `src/App.jsx` — edit those, commit, and push. The site will redeploy automatically.
+- Deploys via `.github/workflows/deploy.yml` using GitHub Pages' native Actions deployment (no `gh-pages` branch or manual build step needed).
+- `vite.config.js` sets `base: '/portfolio/'` to match this repo's name — if the repo is ever renamed, update this value to match, or the site will break.
